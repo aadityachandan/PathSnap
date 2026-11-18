@@ -28,9 +28,13 @@ python run_all.py --data-root "/absolute/path/Student folder"
 python -m pytest -q
 ```
 
-Default run: 80 training trips, a reproducible cap of 300 eligible GPS observations
-per trip for classifier fitting, 3-fold GroupKFold by trip, five distinct algorithms,
-12 Optuna TPE trials (4 startup, 8 model-guided), and all 10 student-test trips.
+Default run: 80 training trips, a reproducible cap of 400 eligible GPS observations
+per trip for classifier fitting, 5-fold GroupKFold by trip, six distinct algorithms
+(logistic regression, Gaussian NB, decision tree, random forest, histogram gradient
+boosting, MLP), 30 Optuna TPE trials (8 startup, 22 model-guided), a decoder sweep over
+beta and backward tolerance, and all 10 student-test trips.
+`python -m member2_models.context_sweep --data-root ...` re-runs the training-only CV
+that chose the context window sizes (artifacts/context_window_sweep.csv).
 All student-test points are evaluated; training eligibility excludes derived labels
 more than 50m from their reference segment and points where the reference is absent
 from the six candidates. Misses are still counted in student-test accuracy.
@@ -93,6 +97,12 @@ as a public production service without access control.
 - No global arc-ID classifier: IDs are local to each trip. Models score GPS/candidate
   pairs using distance, heading, segment length, projection fraction, speed, time gap,
   distance rank and distance relative to the nearest segment.
+- Six sequence-context features (pathsnap/context.py) are added for the classifier:
+  heading over a +/-10 point window, how often the same road is a candidate for the
+  +/-10 neighbouring points, their mean distance to it, how often it is their nearest
+  road, and whether it connects to a candidate of the previous / next point. They were
+  added after error analysis showed most mistakes were opposite-direction twin roads
+  (noisy one-second heading) and adjacent segments at boundaries. 14 features in total.
 - `.route` is a sequence, NOT one label per GPS sample. A monotone dynamic program
   aligns each GPS sample to an ordered reference-segment position. These are proxy
   labels derived from the supplied reference, not independent physical ground truth.
@@ -101,11 +111,13 @@ as a public production service without access control.
 - Candidate Macro F1 is binary correct-candidate vs incorrect-candidate F1, averaged
   over those two classes. It is not multiclass F1 over trip-local arc identifiers.
   Top-1 chooses one candidate per GPS point and counts candidate misses as wrong.
-- Model selection uses mean 3-fold grouped-CV candidate Macro F1. Student-test
+- Model selection and Bayesian tuning use mean 5-fold grouped-CV Top-1 accuracy (correct
+  road ranked first for each GPS point); CV Macro F1 and log loss are also reported. Student-test
   results are development comparisons, never claims about unseen evaluator trips.
 - Viterbi maximizes log model emission probabilities plus directed-network movement
-  compatibility. Parameters: beta selected from a six-value development sweep, gap restart 30s, speed ceiling 65m/s, bounded
-  graph search 250-5000m. Beta is selected by mean per-trip Top-1 on student-test development data; other limits are fixed engineering defaults. These development results are not an untouched test estimate.
+  compatibility. Parameters: beta and a same-road backward tolerance (GPS slip of a
+  few metres treated as no movement) selected from a development sweep, gap restart 30s, speed ceiling 65m/s, bounded
+  graph search 250-5000m. Beta and tolerance are selected by mean per-trip Top-1 on student-test development data; other limits are fixed engineering defaults. These development results are not an untouched test estimate.
   All-invalid transitions or large time gaps explicitly start new route pieces.
 - Strict adjacency is the fraction of consecutive assigned arcs that are equal or
   share a directed endpoint. It penalizes valid multi-edge movement between samples.
@@ -120,7 +132,7 @@ as a public production service without access control.
 ## Repository contents
 
 `pathsnap/`: shared implementation. `member1_data/`: preparation and audit.
-`member2_models/`: five-model comparison and Bayesian search. `member3_decoder/`:
+`member2_models/`: six-model comparison, context-window sweep and Bayesian search. `member3_decoder/`:
 sequence evaluation and maps. `member4_app/`: FastAPI and static UI.
 `artifacts/`: models, configurations, exact training selections, CV folds, trials.
 `results/`: real metrics, maps, plots and predictions. `report/`: report generator.

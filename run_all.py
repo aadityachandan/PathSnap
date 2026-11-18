@@ -3,7 +3,7 @@ import argparse,os,subprocess,sys
 from pathlib import Path
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--data-root',required=True);p.add_argument('--trials',type=int,default=12);p.add_argument('--max-observations',type=int,default=300);p.add_argument('--skip-prepare',action='store_true');p.add_argument('--skip-train',action='store_true');a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--data-root',required=True);p.add_argument('--trials',type=int,default=30);p.add_argument('--max-observations',type=int,default=400);p.add_argument('--skip-prepare',action='store_true');p.add_argument('--skip-train',action='store_true');a=p.parse_args()
     root=Path(__file__).resolve().parent;os.chdir(root)
     env=os.environ.copy();env.setdefault('MPLCONFIGDIR',str(root/'work'/'mpl'));env.setdefault('OMP_NUM_THREADS','2');env.setdefault('OPENBLAS_NUM_THREADS','2')
     cmds=[]

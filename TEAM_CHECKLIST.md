@@ -11,8 +11,8 @@ for the named teammates, not claims that those people have already done the work
 - [ ] Explain six-candidate generation and all eight features.
 
 ## AADITYA VASHISHT - PES1UG24CS004
-- [ ] Read the saved five-model comparison and Bayesian trial log.
-- [ ] Reproduce at least one baseline; explain all five model families.
+- [ ] Read the saved six-model comparison, context-window sweep and Bayesian trial log.
+- [ ] Reproduce at least one baseline; explain all six model families and the six context features.
 - [ ] Explain grouped CV, model selection, sampling and tuned-vs-untuned performance.
 - [ ] Verify the model filename/configuration used by the API.
 
