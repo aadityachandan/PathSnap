@@ -1,0 +1,11 @@
+decoder sweep 00000000
+decoder sweep 00000007
+decoder sweep 00000009
+decoder sweep 00000040
+decoder sweep 00000052
+decoder sweep 00000056
+decoder sweep 00000065
+decoder sweep 00000076
+decoder sweep 00000077
+decoder sweep 00000091
+selected beta 10.0 backward tolerance 40.0
