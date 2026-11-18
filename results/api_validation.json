@@ -1,0 +1,92 @@
+[
+  {
+    "trip_id": "00000000",
+    "status": 200,
+    "observations": 2503,
+    "prediction_seconds": 0.3563756670046132,
+    "breaks": 4,
+    "top1": 0.9616460247702757,
+    "transport": "in-process FastAPI TestClient"
+  },
+  {
+    "trip_id": "00000007",
+    "status": 200,
+    "observations": 1354,
+    "prediction_seconds": 0.1739259169989964,
+    "breaks": 0,
+    "top1": 0.9807976366322009,
+    "transport": "in-process FastAPI TestClient"
+  },
+  {
+    "trip_id": "00000009",
+    "status": 200,
+    "observations": 1049,
+    "prediction_seconds": 0.1805106250103563,
+    "breaks": 5,
+    "top1": 0.7797902764537655,
+    "transport": "in-process FastAPI TestClient"
+  },
+  {
+    "trip_id": "00000040",
+    "status": 200,
+    "observations": 2995,
+    "prediction_seconds": 0.41685045800113585,
+    "breaks": 1,
+    "top1": 0.9161936560934891,
+    "transport": "in-process FastAPI TestClient"
+  },
+  {
+    "trip_id": "00000052",
+    "status": 200,
+    "observations": 262,
+    "prediction_seconds": 0.043570875001023524,
+    "breaks": 0,
+    "top1": 0.9427480916030534,
+    "transport": "in-process FastAPI TestClient"
+  },
+  {
+    "trip_id": "00000056",
+    "status": 200,
+    "observations": 3958,
+    "prediction_seconds": 0.5540235829976154,
+    "breaks": 8,
+    "top1": 0.8708943911066195,
+    "transport": "in-process FastAPI TestClient"
+  },
+  {
+    "trip_id": "00000065",
+    "status": 200,
+    "observations": 768,
+    "prediction_seconds": 0.1260872919956455,
+    "breaks": 3,
+    "top1": 0.8763020833333334,
+    "transport": "in-process FastAPI TestClient"
+  },
+  {
+    "trip_id": "00000076",
+    "status": 200,
+    "observations": 1486,
+    "prediction_seconds": 0.2948197090008762,
+    "breaks": 8,
+    "top1": 0.901749663526245,
+    "transport": "in-process FastAPI TestClient"
+  },
+  {
+    "trip_id": "00000077",
+    "status": 200,
+    "observations": 3911,
+    "prediction_seconds": 0.5367533749958966,
+    "breaks": 4,
+    "top1": 0.8527230887241115,
+    "transport": "in-process FastAPI TestClient"
+  },
+  {
+    "trip_id": "00000091",
+    "status": 200,
+    "observations": 874,
+    "prediction_seconds": 0.14108791599574033,
+    "breaks": 0,
+    "top1": 0.8729977116704806,
+    "transport": "in-process FastAPI TestClient"
+  }
+]
