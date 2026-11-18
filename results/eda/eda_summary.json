@@ -1,0 +1,81 @@
+{
+  "partitions": {
+    "student_test": 10,
+    "train": 80
+  },
+  "evaluator_testing_used": false,
+  "train_sampling": {
+    "total_steps": 208337,
+    "fraction_exactly_1s": 0.9650134157638826,
+    "gaps_over_5s": 1216,
+    "max_gap_s": 153064.0
+  },
+  "missing_and_invalid_totals": {
+    "student_test": {
+      "gps_missing_cells": 0,
+      "gps_invalid_lon_lat": 0,
+      "duplicate_timestamps": 0,
+      "non_increasing_steps": 0,
+      "stationary_consecutive_points": 0,
+      "gaps_over_5s": 44,
+      "route_invalid_arc_ids": 0,
+      "duplicate_arcs": 128,
+      "self_loop_arcs": 2
+    },
+    "train": {
+      "gps_missing_cells": 0,
+      "gps_invalid_lon_lat": 0,
+      "duplicate_timestamps": 0,
+      "non_increasing_steps": 0,
+      "stationary_consecutive_points": 6,
+      "gaps_over_5s": 1216,
+      "route_invalid_arc_ids": 0,
+      "duplicate_arcs": 1775,
+      "self_loop_arcs": 22
+    }
+  },
+  "route_consecutive_connected_mean": 0.9993890160712059,
+  "worst_alignment_trips": [
+    {
+      "split": "train",
+      "trip": "00000054",
+      "gps_points": 19313,
+      "max_gap_s": 79.0,
+      "alignment_within_50m": 0.10557655465230674,
+      "candidate_miss_rate": 0.8838088334282608
+    },
+    {
+      "split": "train",
+      "trip": "00000033",
+      "gps_points": 5844,
+      "max_gap_s": 3.0,
+      "alignment_within_50m": 0.4113620807665982,
+      "candidate_miss_rate": 0.6673511293634496
+    },
+    {
+      "split": "train",
+      "trip": "00000002",
+      "gps_points": 7243,
+      "max_gap_s": 160.0,
+      "alignment_within_50m": 0.8801601546320585,
+      "candidate_miss_rate": 0.10741405494960651
+    },
+    {
+      "split": "train",
+      "trip": "00000066",
+      "gps_points": 4325,
+      "max_gap_s": 1.0,
+      "alignment_within_50m": 0.9098265895953758,
+      "candidate_miss_rate": 0.04531791907514451
+    },
+    {
+      "split": "train",
+      "trip": "00000043",
+      "gps_points": 2322,
+      "max_gap_s": 230.0,
+      "alignment_within_50m": 0.9289405684754521,
+      "candidate_miss_rate": 0.06546080964685616
+    }
+  ],
+  "folium_map": "results/eda/eda_map_train_00000039.html"
+}
