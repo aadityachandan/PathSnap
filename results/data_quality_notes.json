@@ -1,0 +1,6 @@
+{
+  "method": "Additional nearest-reference geometry audit, independent of monotone ordering; 50m threshold",
+  "00000054": {"gps_points":19313,"reference_arcs":422,"fraction_near_any_reference_segment":0.12804846476466628,"fraction_near_monotone_aligned_segment":0.10557655465230674},
+  "00000033": {"gps_points":5844,"reference_arcs":169,"fraction_near_any_reference_segment":0.41204654346338127,"fraction_near_monotone_aligned_segment":0.4113620807665982},
+  "interpretation":"The large mismatch is not solely an alignment-order effect. Much of the GPS track lies more than 50m from every supplied reference segment. This may reflect reference coverage or data quality; exact cause is unverified. Filter unreliable training labels and retain all student-test points."
+}
